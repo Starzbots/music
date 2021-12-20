@@ -56,5 +56,5 @@ async def ping(_, message):
             pingchars = pingfont[normaltext.index(normal)]
             resp = resp.replace(normal, pingchars)    
     await response.edit_text(
-        f"{resp} ms | {MUSIC_BOT_NAME}\n System Stats:</u></b>{uptime}"
+        f"**{resp} ms | {MUSIC_BOT_NAME}\n\nSystem Stats:</u></b>{uptime}**"
     )
