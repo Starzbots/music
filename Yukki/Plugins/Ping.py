@@ -45,7 +45,7 @@ async def ping(_, message):
     start = datetime.now()
     response = await message.reply_photo(
         photo="Utils/Query.jpg",
-        caption=">> Pong!",
+        caption="`Pinging!...`",
     )
     uptime = await bot_sys_stats()
     end = datetime.now()
@@ -56,5 +56,5 @@ async def ping(_, message):
             pingchars = pingfont[normaltext.index(normal)]
             resp = resp.replace(normal, pingchars)    
     await response.edit_text(
-        f"**Pong!**\n`⚡{resp} ms`\n\n<b><u>{MUSIC_BOT_NAME} System Stats:</u></b>{uptime}"
+        f"{resp} ms | {MUSIC_BOT_NAME}\n System Stats:</u></b>{uptime}"
     )
