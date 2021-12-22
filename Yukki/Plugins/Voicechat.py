@@ -50,29 +50,6 @@ async def pr_go_back_timer(_, CallbackQuery):
             duration_min = db_mem[CallbackQuery.message.chat.id]["total"]
             buttons = primary_markup(videoid, user_id, dur_left, duration_min)
             await CallbackQuery.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(buttons))
-             
-    
-    
-
-@app.on_callback_query(filters.regex("timer_checkup_markup"))
-async def timer_checkup_markup(_, CallbackQuery):
-    callback_data = CallbackQuery.data.strip()
-    callback_request = callback_data.split(None, 1)[1]
-    videoid, user_id = callback_request.split("|")
-    if await is_active_chat(CallbackQuery.message.chat.id):
-        if db_mem[CallbackQuery.message.chat.id]["videoid"] == videoid:
-            dur_left = db_mem[CallbackQuery.message.chat.id]["left"]
-            duration_min = db_mem[CallbackQuery.message.chat.id]["total"]
-            return await CallbackQuery.answer(
-                f"Remaining {dur_left} out of {duration_min} Mins.",
-                show_alert=True,
-            )
-        return await CallbackQuery.answer(f"Not Playing.", show_alert=True)
-    else:
-        return await CallbackQuery.answer(
-            f"No Active Voice Chat", show_alert=True
-        )
-
 
 @app.on_message(filters.command("queue"))
 async def activevc(_, message: Message):
