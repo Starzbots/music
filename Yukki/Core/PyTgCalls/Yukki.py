@@ -167,7 +167,7 @@ async def stream_end_handler(_, update: Update):
                 "28492",
                 aud,
             )
-    except Exception as ee:
+    except Exception as e:
         print(e)
 
 
